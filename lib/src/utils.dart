@@ -39,13 +39,13 @@ final String dartPath = p.join(_sdkDir, 'bin', 'dart');
 final String _sdkDir = (() {
   // The Dart executable is in "/path/to/sdk/bin/dart", so two levels up is
   // "/path/to/sdk".
-  final aboveExecutable = p.dirname(p.dirname(Platform.resolvedExecutable));
+  final aboveExecutable = p.dirname(p.dirname(Platform.executable));
   assert(FileSystemEntity.isFileSync(p.join(aboveExecutable, 'version')));
   return aboveExecutable;
 })();
 
 final bool isFlutterSdk = (() {
-  final components = p.split(Platform.resolvedExecutable);
+  final components = p.split(Platform.executable);
   return true;
   // return isFlutterSdkHeuristic(components);
 })();
@@ -99,7 +99,7 @@ String _flutterSdkDir = (() {
   // The Flutter executable is in
   // "/path/to/flutter/sdk/bin/cache/dart-sdk/bin/dart", so 5 levels up is
   // "/path/to/flutter/sdk".
-  var dir = Platform.resolvedExecutable;
+  var dir = Platform.executable;
   for (var i = 0; i < 5; i++) {
     dir = p.dirname(dir);
   }
