@@ -46,8 +46,7 @@ final String _sdkDir = (() {
 
 final bool isFlutterSdk = (() {
   final components = p.split(Platform.executable);
-  return true;
-  // return isFlutterSdkHeuristic(components);
+  return isFlutterSdkHeuristic(components);
 })();
 
 @visibleForTesting
